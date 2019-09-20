@@ -140,7 +140,7 @@ bool key_waitForPressEv(board_swId_enum id, TickType_t waitTime)
 
     portEXIT_CRITICAL();
 
-    if (xTaskNotifyWait(UINT32_MAX, UINT32_MAX, NULL, waitTime))
+    if (ulTaskNotifyTake(pdTRUE, waitTime))
     {
         /* se obtuvo la notificación */
         ret = true;
